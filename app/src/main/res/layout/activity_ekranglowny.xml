@@ -4,43 +4,29 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Ekranglowny">
+    tools:context=".EkranGlowny">
 
     <TextView
-        android:id="@+id/textView2"
-        android:layout_width="202dp"
-        android:layout_height="74dp"
-        android:text="Wybierz konto"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:id="@+id/WybierzKontoNapis"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:text="Wybierz Konto"
+        android:textAlignment="center"
+        android:textSize="40sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.500"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.100" />
+        app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="120dp"
-        android:layout_height="58dp"
-        android:text="tu beda konta
-"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.8"
+    <Button
+        android:id="@+id/ButtonDodaj"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginTop="100dp"
+        android:foreground="@drawable/dodaj"
+        app:layout_constraintTop_toBottomOf="@+id/WybierzKontoNapis"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.3" />
+        app:layout_constraintEnd_toEndOf="parent" />
 
-    <ImageView
-        android:layout_width="88dp"
-        android:layout_height="91dp"
-        android:src="@drawable/nowy"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.1"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.3"
-        android:contentDescription="nowy_uzytkownik" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
