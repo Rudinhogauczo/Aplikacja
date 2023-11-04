@@ -27,6 +27,9 @@
         <activity
             android:name=".NoweKonto"
             android:exported="false" />
+        <activity
+            android:name=".Szczegoly"
+            android:exported="false" />
     </application>
 
 </manifest>

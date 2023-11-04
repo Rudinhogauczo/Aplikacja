@@ -3,9 +3,12 @@ package com.example.myapplication
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.Gravity
 import android.widget.Button
+import android.widget.GridLayout
 import android.widget.ImageButton
 import android.widget.LinearLayout
+import android.widget.TextView
 
 class EkranGlowny : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -14,7 +17,7 @@ class EkranGlowny : AppCompatActivity() {
 
         val buttonDodaj = findViewById<Button>(R.id.ButtonDodaj)
         val buttonReset = findViewById<Button>(R.id.ButtonReset)
-        val linearImiona = findViewById<LinearLayout>(R.id.linearImiona)
+        val gridLayout = findViewById<GridLayout>(R.id.gridLayout)
 
 
         buttonDodaj.setOnClickListener {
@@ -29,7 +32,7 @@ class EkranGlowny : AppCompatActivity() {
             db.close()
 
 
-            linearImiona.removeAllViews()
+            gridLayout.removeAllViews()
         }
 
         val dbHelper = Baza(this)
@@ -40,9 +43,23 @@ class EkranGlowny : AppCompatActivity() {
             while (!cursor.isAfterLast) {
                 val imie = cursor.getString(cursor.getColumnIndex("imie"))
 
+                val linearLayout = LinearLayout(this)
+                linearLayout.orientation = LinearLayout.VERTICAL
+
                 val ButtonKonto = ImageButton(this)
+                ButtonKonto.setBackgroundResource(0)
                 ButtonKonto.setImageResource(R.drawable.konto100x100)
-                linearImiona.addView(ButtonKonto)
+
+
+                val textViewImie = TextView(this)
+                textViewImie.text = imie
+                textViewImie.gravity = Gravity.CENTER
+
+                linearLayout.addView(ButtonKonto)
+                linearLayout.addView(textViewImie)
+
+                gridLayout.addView(linearLayout)
+
                 cursor.moveToNext()
             }
         }
