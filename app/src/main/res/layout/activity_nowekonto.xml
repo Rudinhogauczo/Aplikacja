@@ -23,7 +23,7 @@
         android:layout_width="400dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="50dp"
-        android:hint="Podaj Imię"
+        android:hint="Podaj imię"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/NoweKontoNapis"/>
@@ -56,5 +56,32 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/PodajWagę"/>
+
+    <ImageButton
+        android:id="@+id/ButtonAkceptacja"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:background="@null"
+        android:scaleType="fitCenter"
+        app:srcCompat="@drawable/akceptacja100x100"
+        android:layout_marginTop="150dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/WyborTypu"
+        app:layout_constraintHorizontal_bias="0.25"/>
+
+    <ImageButton
+        android:id="@+id/ButtonRezygnacja"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:background="@null"
+        android:scaleType="fitCenter"
+        app:srcCompat="@drawable/rezygnacja100x100"
+        android:layout_marginTop="150dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/WyborTypu"
+        app:layout_constraintHorizontal_bias="0.75"/>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

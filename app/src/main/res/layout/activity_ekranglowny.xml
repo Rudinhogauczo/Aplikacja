@@ -11,7 +11,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
-        android:text="Wybierz Konto"
+        android:text="Wybierz konto"
         android:textAlignment="center"
         android:textSize="40sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -27,6 +27,25 @@
         app:layout_constraintTop_toBottomOf="@+id/WybierzKontoNapis"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
+
+
+    <LinearLayout
+        android:id="@+id/linearImiona"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintTop_toBottomOf="@+id/ButtonDodaj"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <Button
+        android:id="@+id/ButtonReset"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="RESETBAZY"
+        tools:layout_editor_absoluteX="161dp"
+        tools:layout_editor_absoluteY="349dp" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
