@@ -50,6 +50,13 @@ class EkranGlowny : AppCompatActivity() {
                 ButtonKonto.setBackgroundResource(0)
                 ButtonKonto.setImageResource(R.drawable.konto100x100)
 
+                // Dodaj obsługę kliknięcia dla przycisku
+                ButtonKonto.setOnClickListener {
+                    // Przygotuj dane do przekazania do NoweKontoActivity
+                    val intent = Intent(this@EkranGlowny, Ekranglowny1::class.java)
+                    intent.putExtra("imie", imie)
+                    startActivity(intent)
+                }
 
                 val textViewImie = TextView(this)
                 textViewImie.text = imie
