@@ -17,6 +17,9 @@ class EkranStartowy : AppCompatActivity() {
         buttonstart.setOnClickListener {
             val intent = Intent(this, EkranGlowny::class.java)
             startActivity(intent)
+            finish()
+
         }
     }
+
 }
