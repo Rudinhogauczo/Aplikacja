@@ -3,6 +3,7 @@ package com.example.myapplication
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.Gravity
 import android.widget.Button
 import android.widget.GridLayout
@@ -50,6 +51,16 @@ class EkranGlowny : AppCompatActivity() {
                 ButtonKonto.setBackgroundResource(0)
                 ButtonKonto.setImageResource(R.drawable.konto100x100)
 
+                ButtonKonto.setOnClickListener {
+                    Log.d("EkranGlowny", "ButtonKonto clicked")
+
+                    val intent = Intent(this, Ekranglowny1::class.java)
+
+                    // Pobierz ID konta klikniętego przez użytkownika
+                    intent.putExtra("IMIE", imie)
+
+                    startActivity(intent)
+                }
 
                 val textViewImie = TextView(this)
                 textViewImie.text = imie
@@ -68,4 +79,6 @@ class EkranGlowny : AppCompatActivity() {
         db.close()
     }
 }
+
+
 
