@@ -30,6 +30,9 @@
         <activity
             android:name=".Szczegoly"
             android:exported="false" />
+        <activity android:name=".Ekranglowny1">
+            <!-- Additional activity configurations if needed -->
+        </activity>
     </application>
 
 </manifest>

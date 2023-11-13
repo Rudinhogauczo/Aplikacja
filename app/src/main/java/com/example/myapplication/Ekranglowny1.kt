@@ -1,46 +1,45 @@
 package com.example.myapplication
 
 import android.os.Bundle
-import android.widget.Toast
+import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 
 class Ekranglowny1 : AppCompatActivity() {
+    private lateinit var databaseManager: Baza
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_ekranglowny1)
 
-        // Retrieve data from the database or wherever you store it
         val intent = intent
-        val uniqueData = intent.getStringExtra("UNIQUE_DATA")
+        if (intent.hasExtra("IMIE")) {
+            val imie = intent.getStringExtra("IMIE")
 
-        // Use the unique data to customize the behavior of this activity
-        // ...
+            // Teraz użyj pobranego imienia, aby pobrać resztę danych z bazy danych
+            val dbHelper = Baza(this)
+            val db = dbHelper.readableDatabase
 
-        // Get data from the database based on the unique data
-        val dbHelper = Baza(this)
-        val db = dbHelper.readableDatabase
+            val columnsToRetrieve = arrayOf("wzrost", "waga", "typ_wagi")
+            val selection = "imie = ?"
+            val selectionArgs = arrayOf(imie)
 
-        // Example query to get the imie column value based on the uniqueData
-        val selection = "imie = ?"
-        val selectionArgs = arrayOf(uniqueData)
-        val cursor = db.query("Konto", arrayOf("imie", "wzrost", "waga", "typ_wagi"), selection, selectionArgs, null, null, null)
+            val cursor =
+                db.query("Konto", columnsToRetrieve, selection, selectionArgs, null, null, null)
 
-        if (cursor.moveToFirst()) {
-            val imie = cursor.getString(cursor.getColumnIndex("imie"))
-            val wzrost = cursor.getInt(cursor.getColumnIndex("wzrost"))
-            val waga = cursor.getInt(cursor.getColumnIndex("waga"))
-            val typWagi = cursor.getString(cursor.getColumnIndex("typ_wagi"))
+            if (cursor.moveToFirst()) {
+                val wzrost = cursor.getInt(cursor.getColumnIndex("wzrost"))
+                val waga = cursor.getInt(cursor.getColumnIndex("waga"))
+                val typWagi = cursor.getString(cursor.getColumnIndex("typ_wagi"))
 
-            // Do something with the retrieved data
-            // ...
+                // Tutaj możesz używać pobranych danych (np. wyświetlić w interfejsie użytkownika)
+                Log.d(
+                    "Ekranglowny1",
+                    "Imię: $imie, Wzrost: $wzrost, Waga: $waga, Typ Wagi: $typWagi"
+                )
+            }
 
-            // Example: Display a toast with the retrieved data
-            val toastMessage = "Imię: $imie, Wzrost: $wzrost, Waga: $waga, Typ wagi: $typWagi"
-            Toast.makeText(this, toastMessage, Toast.LENGTH_SHORT).show()
+            cursor.close()
+            db.close()
         }
-
-        cursor.close()
-        db.close()
     }
 }
