@@ -1,11 +1,11 @@
 package com.example.myapplication
 
 import android.os.Bundle
-import android.util.Log
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 
 class Ekranglowny1 : AppCompatActivity() {
-    private lateinit var databaseManager: Baza
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -32,10 +32,10 @@ class Ekranglowny1 : AppCompatActivity() {
                 val typWagi = cursor.getString(cursor.getColumnIndex("typ_wagi"))
 
                 // Tutaj możesz używać pobranych danych (np. wyświetlić w interfejsie użytkownika)
-                Log.d(
-                    "Ekranglowny1",
-                    "Imię: $imie, Wzrost: $wzrost, Waga: $waga, Typ Wagi: $typWagi"
-                )
+                val textViewDane = findViewById<TextView>(R.id.textViewDane)
+                val textToShow = "Masz na imię: $imie\nMasz $wzrost cm wzrostu\nMasz $waga kg wagi \nCo chcesz zrobić? $typWagi"
+                textViewDane.text = textToShow
+
             }
 
             cursor.close()
