@@ -18,5 +18,19 @@
         android:textSize="18sp"
         android:textStyle="bold"
         android:layout_centerInParent="true" />
+    <EditText
+        android:id="@+id/caloriesEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/textViewDane"
+        android:hint="Dodaj kalorie"
+        android:inputType="number" />
+
+    <Button
+        android:id="@+id/addButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/caloriesEditText"
+        android:text="Dodaj kalorie" />
 
 </RelativeLayout>

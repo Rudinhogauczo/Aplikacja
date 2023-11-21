@@ -8,7 +8,7 @@ import java.io.Serializable
 
 class Baza(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME, null, DATABASE_VERSION) {
     override fun onCreate(db: SQLiteDatabase) {
-        val createTableQuery = "CREATE TABLE IF NOT EXISTS Konto (id INTEGER PRIMARY KEY, imie TEXT, wzrost INTEGER, waga INTEGER, typ_wagi TEXT)"
+        val createTableQuery = "CREATE TABLE IF NOT EXISTS Konto (id INTEGER PRIMARY KEY, imie TEXT, wzrost INTEGER, waga INTEGER, typ_wagi TEXT, kalorie INTEGER)"
         db.execSQL(createTableQuery)
     }
     override fun onUpgrade(db: SQLiteDatabase, oldVersion: Int, newVersion: Int) {
@@ -20,20 +20,23 @@ class Baza(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME, null, DA
 
     companion object {
         private const val DATABASE_NAME = "BazaDanych"
-        private const val DATABASE_VERSION = 1
+        private const val DATABASE_VERSION = 2
         private const val TABLE_NAME = "Konto"
         private const val COLUMN_ID = "id"
         private const val COLUMN_NAME = "imie"
         private const val COLUMN_HEIGHT = "wzrost"
         private const val COLUMN_WEIGHT = "waga"
         private const val COLUMN_WEIGHT_TYPE = "typ_wagi"
+
     }
         data class Konto(
         val id: Long,
         val imie: String,
         val wzrost: Int,
         val waga: Int,
-        val typWagi: String
+        val typWagi: String,
+        val kalorie: Int
+
     ) : Serializable
         {
             companion object {
