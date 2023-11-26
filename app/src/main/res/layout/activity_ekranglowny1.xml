@@ -33,4 +33,24 @@
         android:layout_below="@id/caloriesEditText"
         android:text="Dodaj kalorie" />
 
+
+    <EditText
+        android:id="@+id/editTextDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/addButton"
+        android:layout_marginTop="-443dp"
+        android:focusable="false"
+        android:hint="Wybierz datę"
+        android:inputType="none" />
+
+    <TextView
+        android:id="@+id/textWyswietlkalorie"
+        android:layout_width="148dp"
+        android:layout_height="63dp"
+        android:layout_below="@id/addButton"
+        android:layout_marginTop="-372dp"
+        android:textColor="@android:color/black"
+        android:textSize="18sp" />
+
 </RelativeLayout>

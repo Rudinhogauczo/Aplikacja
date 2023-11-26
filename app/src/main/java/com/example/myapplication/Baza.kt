@@ -10,9 +10,13 @@ class Baza(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME, null, DA
     override fun onCreate(db: SQLiteDatabase) {
         val createTableQuery = "CREATE TABLE IF NOT EXISTS Konto (id INTEGER PRIMARY KEY, imie TEXT, wzrost INTEGER, waga INTEGER, typ_wagi TEXT, kalorie INTEGER, data_resetu TEXT)"
         db.execSQL(createTableQuery)
+
+        val createDailyCaloriesTableQuery = "CREATE TABLE IF NOT EXISTS DziennaKontrolaKalorii (id INTEGER PRIMARY KEY, imie TEXT, data TEXT, ilosc_kalorii INTEGER)"
+        db.execSQL(createDailyCaloriesTableQuery)
     }
     override fun onUpgrade(db: SQLiteDatabase, oldVersion: Int, newVersion: Int) {
         db.execSQL("DROP TABLE IF EXISTS Konto")
+        db.execSQL("DROP TABLE IF EXISTS DziennaKontrolaKalorii")
         onCreate(db)
     }
 
@@ -20,7 +24,7 @@ class Baza(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME, null, DA
 
     companion object {
         private const val DATABASE_NAME = "BazaDanych"
-        private const val DATABASE_VERSION = 2
+        private const val DATABASE_VERSION = 4
         private const val TABLE_NAME = "Konto"
         private const val COLUMN_ID = "id"
         private const val COLUMN_NAME = "imie"
@@ -40,7 +44,6 @@ class Baza(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME, null, DA
     ) : Serializable
         {
             companion object {
-                // Tu możesz umieszczać metody lub stałe związane z klasą Konto
             }
         }
 }
