@@ -8,7 +8,7 @@ import java.io.Serializable
 
 class Baza(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME, null, DATABASE_VERSION) {
     override fun onCreate(db: SQLiteDatabase) {
-        val createTableQuery = "CREATE TABLE IF NOT EXISTS Konto (id INTEGER PRIMARY KEY, imie TEXT, wzrost INTEGER, waga INTEGER, typ_wagi TEXT, kalorie INTEGER)"
+        val createTableQuery = "CREATE TABLE IF NOT EXISTS Konto (id INTEGER PRIMARY KEY, imie TEXT, wzrost INTEGER, waga INTEGER, typ_wagi TEXT, kalorie INTEGER, data_resetu TEXT)"
         db.execSQL(createTableQuery)
     }
     override fun onUpgrade(db: SQLiteDatabase, oldVersion: Int, newVersion: Int) {
