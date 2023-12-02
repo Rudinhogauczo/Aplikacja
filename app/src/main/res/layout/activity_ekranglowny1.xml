@@ -1,14 +1,56 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:paddingBottom="16dp"
+    android:paddingLeft="16dp"
+    android:paddingRight="16dp"
+    android:paddingTop="16dp"
+    tools:context=".Ekranglowny1">
+
+    <!-- Dodaj TextView do wyświetlenia danych -->
+    <TextView
+        android:id="@+id/textViewDane"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Dane:"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:layout_centerInParent="true" />
+    <EditText
+        android:id="@+id/caloriesEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/textViewDane"
+        android:hint="Dodaj kalorie"
+        android:inputType="number" />
+
+    <Button
+        android:id="@+id/addButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/caloriesEditText"
+        android:text="Dodaj kalorie" />
+
+
+    <EditText
+        android:id="@+id/editTextDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/addButton"
+        android:layout_marginTop="-443dp"
+        android:focusable="false"
+        android:hint="Wybierz datę"
+        android:inputType="none" />
 
     <TextView
-        android:id="@+id/textView"
-        android:layout_width="171dp"
-        android:layout_height="111dp"
-        android:text="TextView"
-        tools:layout_editor_absoluteX="110dp"
-        tools:layout_editor_absoluteY="202dp" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+        android:id="@+id/textWyswietlkalorie"
+        android:layout_width="148dp"
+        android:layout_height="63dp"
+        android:layout_below="@id/addButton"
+        android:layout_marginTop="-372dp"
+        android:textColor="@android:color/black"
+        android:textSize="18sp" />
+
+</RelativeLayout>

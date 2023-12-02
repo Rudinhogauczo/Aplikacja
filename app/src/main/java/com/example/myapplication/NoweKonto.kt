@@ -60,6 +60,8 @@ class NoweKonto : AppCompatActivity() {
 
             val intent = Intent(this, EkranGlowny::class.java)
             startActivity(intent)
+            finish()
+
         }
     }
 

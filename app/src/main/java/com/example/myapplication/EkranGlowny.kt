@@ -24,6 +24,7 @@ class EkranGlowny : AppCompatActivity() {
         buttonDodaj.setOnClickListener {
             val intent = Intent(this, NoweKonto::class.java)
             startActivity(intent)
+            finish()
         }
 
         buttonReset.setOnClickListener {
