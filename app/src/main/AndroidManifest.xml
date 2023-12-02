@@ -28,11 +28,11 @@
             android:name=".NoweKonto"
             android:exported="false" />
         <activity
-            android:name=".Szczegoly"
+            android:name=".Ustawienia"
             android:exported="false" />
-        <activity android:name=".Ekranglowny1">
-            <!-- Additional activity configurations if needed -->
-        </activity>
+        <activity
+            android:name=".EkranKonta"
+            android:exported="false" />
     </application>
 
 </manifest>

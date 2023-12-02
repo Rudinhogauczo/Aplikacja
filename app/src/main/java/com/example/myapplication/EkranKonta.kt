@@ -13,7 +13,7 @@ import java.text.SimpleDateFormat
 import java.util.Calendar
 import java.util.Locale
 
-class Ekranglowny1 : AppCompatActivity() {
+class EkranKonta : AppCompatActivity() {
     private lateinit var dbHelper: Baza
     private lateinit var db: SQLiteDatabase
     private lateinit var imie: String
@@ -21,7 +21,7 @@ class Ekranglowny1 : AppCompatActivity() {
     private lateinit var editTextDate: EditText
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_ekranglowny1)
+        setContentView(R.layout.activity_ekrankonta)
 
         dbHelper = Baza(this)
         db = dbHelper.readableDatabase
