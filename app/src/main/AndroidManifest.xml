@@ -31,6 +31,9 @@
             android:name=".Ustawienia"
             android:exported="false" />
         <activity
+            android:name=".OProgramie"
+            android:exported="false" />
+        <activity
             android:name=".EkranKonta"
             android:exported="false" />
     </application>
