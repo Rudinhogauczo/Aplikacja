@@ -7,7 +7,7 @@
     android:paddingLeft="16dp"
     android:paddingRight="16dp"
     android:paddingTop="16dp"
-    tools:context=".Ekranglowny1">
+    tools:context=".EkranKonta">
 
     <!-- Dodaj TextView do wyświetlenia danych -->
     <TextView

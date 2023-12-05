@@ -55,7 +55,7 @@ class EkranGlowny : AppCompatActivity() {
                 ButtonKonto.setOnClickListener {
                     Log.d("EkranGlowny", "ButtonKonto clicked")
 
-                    val intent = Intent(this, Ekranglowny1::class.java)
+                    val intent = Intent(this, EkranKonta::class.java)
 
                     // Pobierz ID konta klikniętego przez użytkownika
                     intent.putExtra("IMIE", imie)
