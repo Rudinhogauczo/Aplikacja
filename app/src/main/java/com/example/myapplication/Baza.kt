@@ -8,7 +8,7 @@ import java.io.Serializable
 
 class Baza(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME, null, DATABASE_VERSION) {
     override fun onCreate(db: SQLiteDatabase) {
-        val createTableQuery = "CREATE TABLE IF NOT EXISTS Konto (id INTEGER PRIMARY KEY, imie TEXT, wzrost INTEGER, waga INTEGER, typ_wagi TEXT, kalorie INTEGER, data_resetu TEXT)"
+        val createTableQuery = "CREATE TABLE IF NOT EXISTS Konto (id INTEGER PRIMARY KEY, imie TEXT, wzrost INTEGER, waga INTEGER, typ_wagi TEXT, kalorie INTEGER, data_resetu TEXT, odciskPalca BLOB)"
         db.execSQL(createTableQuery)
 
         val createDailyCaloriesTableQuery = "CREATE TABLE IF NOT EXISTS DziennaKontrolaKalorii (id INTEGER PRIMARY KEY, imie TEXT, data TEXT, ilosc_kalorii INTEGER)"
@@ -39,7 +39,7 @@ class Baza(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME, null, DA
         val wzrost: Int,
         val waga: Int,
         val typWagi: String,
-        val kalorie: Int
+        val kalorie: Int,
 
     ) : Serializable
         {
