@@ -1,5 +1,6 @@
 package com.example.myapplication
 
+import android.annotation.SuppressLint
 import android.app.DatePickerDialog
 import android.content.ContentValues
 import android.database.sqlite.SQLiteDatabase
@@ -11,6 +12,7 @@ import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import java.text.SimpleDateFormat
 import java.util.Calendar
+import java.util.Date
 import java.util.Locale
 
 class EkranKonta : AppCompatActivity() {
@@ -44,12 +46,12 @@ class EkranKonta : AppCompatActivity() {
             kalorie += enteredCalories
 
             update_kalorie_w_bazie(kalorie)
-            zapisz_kalorie(imie, enteredCalories)
             update_kalorie_Display()
         }
 
-
     }
+
+    @SuppressLint("Range")
     private fun resetuj_kalorie() {
         val today = Calendar.getInstance()
         val todayString = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(today.time)
@@ -84,18 +86,8 @@ class EkranKonta : AppCompatActivity() {
 
         db.update("Konto", values, selection, selectionArgs)
     }
-    private fun zapisz_kalorie(imie: String, enteredCalories: Int) {
-        val today = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(Calendar.getInstance().time)
 
-        val values = ContentValues().apply {
-            put("imie", imie)
-            put("data", today)
-            put("ilosc_kalorii",enteredCalories)
-        }
-
-        db.insert("DziennaKontrolaKalorii", null, values)
-    }
-
+    @SuppressLint("Range")
     private fun update_kalorie_Display() {
         val columnsToRetrieve = arrayOf("wzrost", "waga", "typ_wagi", "kalorie")
         val selection = "imie = ?"
@@ -125,10 +117,15 @@ class EkranKonta : AppCompatActivity() {
         val datePickerDialog = DatePickerDialog(
             this,
             { _, selectedYear, selectedMonth, selectedDay ->
-                val selectedDate = "$selectedYear-${selectedMonth + 1}-$selectedDay"
-                editTextDate.setText(selectedDate)
+                val selectedDateCalendar = Calendar.getInstance()
+                selectedDateCalendar.set(selectedYear, selectedMonth, selectedDay)
+                val selectedDate = selectedDateCalendar.time // Konwersja na obiekt Date
 
-                kalorie_z_daty(selectedDate)
+                val dateFormat = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
+                val formattedDate = dateFormat.format(selectedDate)
+
+                editTextDate.setText(formattedDate)
+                displayCaloriesForDate(selectedDate)
             },
             rok,
             miesiac,
@@ -136,36 +133,66 @@ class EkranKonta : AppCompatActivity() {
         )
         datePickerDialog.show()
     }
-    private fun kalorie_z_daty(date: String) {
-        Log.d("DEBUG", "Wyświetlanie kalorii dla daty: $date") // Sprawdzenie daty
-        val columnsToRetrieve = arrayOf("SUM(ilosc_kalorii) AS total_calories") // Zapytanie o sumę kalorii
+    @SuppressLint("SetTextI18n", "Range")
+    private fun displayCaloriesForDate(selectedDate: Date) {
+        val dateFormat = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
+        val formattedDate = dateFormat.format(selectedDate)
+
+        val columnsToRetrieve = arrayOf("kalorie")
         val selection = "imie = ? AND data = ?"
-        val selectionArgs = arrayOf(imie, date)
+        val selectionArgs = arrayOf(imie, formattedDate) // Wykorzystanie sformatowanej daty
 
-        val cursor = db.query(
-            "DziennaKontrolaKalorii",
-            columnsToRetrieve,
-            selection,
-            selectionArgs,
-            null,
-            null,
-            null
-        )
+        val cursor = db.query("DziennaKontrolaKalorii", columnsToRetrieve, selection, selectionArgs, null, null, null)
 
-        var totalCalories = 0 // Domyślna wartość
-
-        if (cursor != null && cursor.moveToFirst()) {
-            totalCalories = cursor.getInt(cursor.getColumnIndex("total_calories"))
+        if (cursor.moveToFirst()) {
+            val calories = cursor.getInt(cursor.getColumnIndex("kalorie"))
+            val textViewCalories = findViewById<TextView>(R.id.textWyswietlkalorie)
+            textViewCalories.text = "Calories for $formattedDate: $calories"
+        } else {
+            val textViewCalories = findViewById<TextView>(R.id.textWyswietlkalorie)
+            textViewCalories.text = "No data available for $formattedDate"
         }
 
         cursor.close()
+    }
+    private fun saveCaloriesToDatabase() {
+        val today = Calendar.getInstance()
+        val todayString = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(today.time)
 
-        val textView = findViewById<TextView>(R.id.textWyswietlkalorie)
-        textView.text = "Spożyte kalorie w dniu $date: $totalCalories"
+        val values = ContentValues()
+        values.put("imie", imie)
+        values.put("data", todayString)
+        values.put("kalorie", kalorie)
+
+        val selection = "imie = ? AND data = ?"
+        val selectionArgs = arrayOf(imie, todayString)
+
+        val rowsAffected = db.update("DziennaKontrolaKalorii", values, selection, selectionArgs)
+
+        if (rowsAffected <= 0) {
+            val insertedRowId = db.insert("DziennaKontrolaKalorii", null, values)
+
+            if (insertedRowId != -1L) {
+                Log.d("Database", "Calorie data inserted successfully")
+            } else {
+                Log.e("Database", "Failed to insert calorie data")
+            }
+        } else {
+            Log.d("Database", "Calorie data updated successfully")
+        }
     }
 
     override fun onDestroy() {
         super.onDestroy()
-        db.close()
+        saveCaloriesToDatabase()
+        dbHelper.close()
+    }
+
+    override fun onPause() {
+        super.onPause()
+        saveCaloriesToDatabase()
+        // Close the writable database
+
+
     }
 }

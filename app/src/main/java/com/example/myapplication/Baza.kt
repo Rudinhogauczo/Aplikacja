@@ -3,7 +3,6 @@ package com.example.myapplication
 import android.content.Context
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
-import android.content.ContentValues
 import java.io.Serializable
 
 class Baza(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME, null, DATABASE_VERSION) {
@@ -11,7 +10,7 @@ class Baza(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME, null, DA
         val createTableQuery = "CREATE TABLE IF NOT EXISTS Konto (id INTEGER PRIMARY KEY, imie TEXT, wzrost INTEGER, waga INTEGER, typ_wagi TEXT, kalorie INTEGER, data_resetu TEXT)"
         db.execSQL(createTableQuery)
 
-        val createDailyCaloriesTableQuery = "CREATE TABLE IF NOT EXISTS DziennaKontrolaKalorii (id INTEGER PRIMARY KEY, imie TEXT, data TEXT, ilosc_kalorii INTEGER)"
+        val createDailyCaloriesTableQuery = "CREATE TABLE IF NOT EXISTS DziennaKontrolaKalorii (id INTEGER PRIMARY KEY, imie TEXT, data DATE, kalorie INTEGER)"
         db.execSQL(createDailyCaloriesTableQuery)
     }
     override fun onUpgrade(db: SQLiteDatabase, oldVersion: Int, newVersion: Int) {
@@ -24,7 +23,7 @@ class Baza(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME, null, DA
 
     companion object {
         private const val DATABASE_NAME = "BazaDanych"
-        private const val DATABASE_VERSION = 4
+        private const val DATABASE_VERSION = 5
         private const val TABLE_NAME = "Konto"
         private const val COLUMN_ID = "id"
         private const val COLUMN_NAME = "imie"
@@ -39,7 +38,7 @@ class Baza(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME, null, DA
         val wzrost: Int,
         val waga: Int,
         val typWagi: String,
-        val kalorie: Int
+        val kalorie: Int,
 
     ) : Serializable
         {

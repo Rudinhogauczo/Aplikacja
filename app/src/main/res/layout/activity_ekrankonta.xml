@@ -18,13 +18,16 @@
         android:textSize="18sp"
         android:textStyle="bold"
         android:layout_centerInParent="true" />
+
     <EditText
         android:id="@+id/caloriesEditText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/textViewDane"
         android:hint="Dodaj kalorie"
-        android:inputType="number" />
+        android:inputType="number"
+        android:minHeight="48dp"
+        tools:ignore="VisualLintTextFieldSize" />
 
     <Button
         android:id="@+id/addButton"
@@ -36,18 +39,21 @@
 
     <EditText
         android:id="@+id/editTextDate"
-        android:layout_width="wrap_content"
+        android:layout_width="123dp"
         android:layout_height="wrap_content"
         android:layout_below="@id/addButton"
         android:layout_marginTop="-443dp"
         android:focusable="false"
         android:hint="Wybierz datę"
-        android:inputType="none" />
+        android:inputType="none"
+        android:minHeight="48dp"
+        android:textColorHint="#8D6E63"
+        tools:ignore="TextFields" />
 
     <TextView
         android:id="@+id/textWyswietlkalorie"
-        android:layout_width="148dp"
-        android:layout_height="63dp"
+        android:layout_width="161dp"
+        android:layout_height="96dp"
         android:layout_below="@id/addButton"
         android:layout_marginTop="-372dp"
         android:textColor="@android:color/black"
