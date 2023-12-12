@@ -37,6 +37,14 @@
         android:text="Dodaj kalorie" />
 
 
+    <Button
+        android:id="@+id/krokomierzButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/caloriesEditText"
+        android:layout_marginTop="50dp"
+        android:text="Krokomierz" />
+
     <EditText
         android:id="@+id/editTextDate"
         android:layout_width="123dp"

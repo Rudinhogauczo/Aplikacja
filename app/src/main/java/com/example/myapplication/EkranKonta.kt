@@ -3,6 +3,7 @@ package com.example.myapplication
 import android.annotation.SuppressLint
 import android.app.DatePickerDialog
 import android.content.ContentValues
+import android.content.Intent
 import android.database.sqlite.SQLiteDatabase
 import android.os.Bundle
 import android.util.Log
@@ -35,6 +36,7 @@ class EkranKonta : AppCompatActivity() {
             update_kalorie_Display()
         }
 
+        val krokomierzButton = findViewById<Button>(R.id.krokomierzButton)
         val addButton = findViewById<Button>(R.id.addButton)
         val caloriesEditText = findViewById<EditText>(R.id.caloriesEditText)
         editTextDate = findViewById(R.id.editTextDate)
@@ -47,6 +49,12 @@ class EkranKonta : AppCompatActivity() {
 
             update_kalorie_w_bazie(kalorie)
             update_kalorie_Display()
+        }
+
+        krokomierzButton.setOnClickListener {
+            val intent = Intent(this, EkranKrokomierza::class.java)
+            startActivity(intent)
+            finish()
         }
 
     }

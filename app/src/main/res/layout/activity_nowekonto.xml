@@ -36,7 +36,8 @@
         android:hint="Podaj wzrost (w centymetrach)"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/PodajImie"/>
+        app:layout_constraintTop_toBottomOf="@id/PodajImie"
+        android:inputType="number"/>
 
     <EditText
         android:id="@+id/PodajWagę"
@@ -46,7 +47,8 @@
         android:hint="Podaj wagę (w kilogramach)"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/PodajWzrost"/>
+        app:layout_constraintTop_toBottomOf="@id/PodajWzrost"
+        android:inputType="number"/>
 
     <Spinner
         android:id="@+id/WyborTypu"
