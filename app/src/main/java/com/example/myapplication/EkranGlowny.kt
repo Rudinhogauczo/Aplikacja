@@ -17,8 +17,7 @@ class EkranGlowny : AppCompatActivity() {
         setContentView(R.layout.activity_ekranglowny)
 
         val buttonDodaj = findViewById<Button>(R.id.ButtonDodaj)
-        val buttonReset = findViewById<Button>(R.id.ButtonReset)
-        val gridLayout = findViewById<GridLayout>(R.id.gridLayout)
+        val siatkakont = findViewById<GridLayout>(R.id.siatkakont)
 
 
         buttonDodaj.setOnClickListener {
@@ -27,15 +26,6 @@ class EkranGlowny : AppCompatActivity() {
             finish()
         }
 
-        buttonReset.setOnClickListener {
-            val dbHelper = Baza(this)
-            val db = dbHelper.writableDatabase
-            db.execSQL("DELETE FROM Konto")
-            db.close()
-
-
-            gridLayout.removeAllViews()
-        }
 
         val dbHelper = Baza(this)
         val db = dbHelper.readableDatabase
@@ -70,7 +60,7 @@ class EkranGlowny : AppCompatActivity() {
                 linearLayout.addView(ButtonKonto)
                 linearLayout.addView(textViewImie)
 
-                gridLayout.addView(linearLayout)
+                siatkakont.addView(linearLayout)
 
                 cursor.moveToNext()
             }
