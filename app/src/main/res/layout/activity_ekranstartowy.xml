@@ -16,15 +16,25 @@
         app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.10" />
+        app:layout_constraintVertical_bias="0.02" />
 
     <ImageButton
         android:id="@+id/PrzyciskRozpocznij"
         android:layout_width="320dp"
         android:layout_height="80dp"
         app:srcCompat="@drawable/przyciskrozpocznij320x80"
-        android:layout_marginTop="60dp"
+        android:layout_marginTop="30dp"
         app:layout_constraintTop_toBottomOf="@+id/IntroIMG"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <ImageButton
+        android:id="@+id/PrzyciskKrokomierz"
+        android:layout_width="320dp"
+        android:layout_height="80dp"
+        app:srcCompat="@drawable/przyciskkrokomierz320x80"
+        android:layout_marginTop="30dp"
+        app:layout_constraintTop_toBottomOf="@+id/PrzyciskRozpocznij"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
@@ -34,7 +44,7 @@
         android:layout_height="80dp"
         app:srcCompat="@drawable/przyciskustawienia320x80"
         android:layout_marginTop="30dp"
-        app:layout_constraintTop_toBottomOf="@+id/PrzyciskRozpocznij"
+        app:layout_constraintTop_toBottomOf="@+id/PrzyciskKrokomierz"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 

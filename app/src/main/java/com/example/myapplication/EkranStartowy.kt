@@ -13,12 +13,19 @@ class EkranStartowy : AppCompatActivity() {
         setContentView(R.layout.activity_ekranstartowy)
 
         val przyciskrozpocznij = findViewById<ImageButton>(R.id.PrzyciskRozpocznij)
+        val przyciskkrokomierz = findViewById<ImageButton>(R.id.PrzyciskKrokomierz)
         val przyciskustawienia = findViewById<ImageButton>(R.id.PrzyciskUstawienia)
         val przyciskoprogramie = findViewById<ImageButton>(R.id.PrzyciskOProgramie)
         val przyciskwyjdz = findViewById<ImageButton>(R.id.PrzyciskWyjdz)
 
         przyciskrozpocznij.setOnClickListener {
             val intent = Intent(this, EkranGlowny::class.java)
+            startActivity(intent)
+            finish()
+        }
+
+        przyciskkrokomierz.setOnClickListener {
+            val intent = Intent(this, EkranKrokomierza::class.java)
             startActivity(intent)
             finish()
         }
