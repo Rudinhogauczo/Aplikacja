@@ -8,19 +8,17 @@
     android:layout_height="match_parent"
     tools:context=".EkranGlowny">
 
-    <TextView
-        android:id="@+id/WybierzKontoNapis"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
-        android:text="Wybierz konto"
-        android:textAlignment="center"
-        android:textSize="40sp"
+    <ImageView
+        android:id="@+id/Obrazek_NapisWybierzKonto"
+        android:layout_width="320dp"
+        android:layout_height="43dp"
+        app:srcCompat="@drawable/tekstwybierz_konto320x43"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.05" />
 
     <GridLayout
         android:id="@+id/siatkakont"
@@ -30,7 +28,7 @@
         android:rowCount="3"
         android:columnCount="3"
         android:padding="10dp"
-        app:layout_constraintTop_toBottomOf="@+id/WybierzKontoNapis"
+        app:layout_constraintTop_toBottomOf="@+id/Obrazek_NapisWybierzKonto"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"/>
 
@@ -40,10 +38,9 @@
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:layout_marginTop="500dp"
-        android:foreground="@drawable/dodaj"
-        app:layout_constraintTop_toBottomOf="@+id/WybierzKontoNapis"
+        android:foreground="@drawable/dodawanie100x100"
+        app:layout_constraintTop_toBottomOf="@+id/Obrazek_NapisWybierzKonto"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>

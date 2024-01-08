@@ -6,57 +6,108 @@
     android:layout_height="match_parent"
     tools:context=".NoweKonto">
 
-    <TextView
-        android:id="@+id/NoweKontoNapis"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
-        android:text="Nowe konto"
-        android:textAlignment="center"
-        android:textSize="40sp"
+
+    <ImageView
+        android:id="@+id/Obrazek_NapisNoweKonto"
+        android:layout_width="320dp"
+        android:layout_height="43dp"
+        app:srcCompat="@drawable/tekstnowe_konto320x43"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.05" />
+        />
+
 
     <EditText
-        android:id="@+id/PodajImie"
-        android:layout_width="400dp"
-        android:layout_height="wrap_content"
+        android:id="@+id/PodajNazweKonta"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
         android:layout_marginTop="50dp"
-        android:hint="Podaj imię"
+        android:hint="Podaj nazwę konta"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/NoweKontoNapis"/>
+        app:layout_constraintHorizontal_bias="0.75"
+        app:layout_constraintTop_toBottomOf="@id/Obrazek_NapisNoweKonto"/>
+
+    <ImageView
+        android:id="@+id/SymbolNazwaKonta"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="50dp"
+        app:srcCompat="@drawable/symbol_nazwakonta50x50"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintHorizontal_bias="0.05"
+        app:layout_constraintTop_toBottomOf="@id/Obrazek_NapisNoweKonto"/>
 
     <EditText
         android:id="@+id/PodajWzrost"
-        android:layout_width="400dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="30dp"
         android:hint="Podaj wzrost (w centymetrach)"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/PodajImie"
+        app:layout_constraintHorizontal_bias="0.75"
+        app:layout_constraintTop_toBottomOf="@id/PodajNazweKonta"
         android:inputType="number"/>
+
+    <ImageView
+        android:id="@+id/SymbolWzrost"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="30dp"
+        app:srcCompat="@drawable/symbol_wzrost50x50"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintHorizontal_bias="0.05"
+        app:layout_constraintTop_toBottomOf="@id/PodajNazweKonta"/>
 
     <EditText
         android:id="@+id/PodajWagę"
-        android:layout_width="400dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="30dp"
         android:hint="Podaj wagę (w kilogramach)"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintHorizontal_bias="0.75"
         app:layout_constraintTop_toBottomOf="@id/PodajWzrost"
         android:inputType="number"/>
 
-    <Spinner
-        android:id="@+id/WyborTypu"
-        android:layout_width="400dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
+    <ImageView
+        android:id="@+id/SymbolWaga"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="30dp"
+        app:srcCompat="@drawable/symbol_waga50x50"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintHorizontal_bias="0.05"
+        app:layout_constraintTop_toBottomOf="@id/PodajWzrost"/>
+
+    <Spinner
+        android:id="@+id/WyborTypu"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="30dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintHorizontal_bias="0.75"
+        app:layout_constraintTop_toBottomOf="@id/PodajWagę"/>
+
+    <ImageView
+        android:id="@+id/SymbolWybor"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="30dp"
+        app:srcCompat="@drawable/symbol_wybor50x50"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintHorizontal_bias="0.05"
         app:layout_constraintTop_toBottomOf="@id/PodajWagę"/>
 
     <ImageButton
@@ -66,7 +117,7 @@
         android:background="@null"
         android:scaleType="fitCenter"
         app:srcCompat="@drawable/akceptacja100x100"
-        android:layout_marginTop="150dp"
+        android:layout_marginTop="75dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/WyborTypu"
@@ -79,11 +130,13 @@
         android:background="@null"
         android:scaleType="fitCenter"
         app:srcCompat="@drawable/rezygnacja100x100"
-        android:layout_marginTop="150dp"
+        android:layout_marginTop="75dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/WyborTypu"
         app:layout_constraintHorizontal_bias="0.75"/>
+
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

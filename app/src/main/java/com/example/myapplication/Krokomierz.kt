@@ -13,6 +13,7 @@ interface StepListener {
 class Krokomierz (private val context: Context, private val stepListener: StepListener) :
     SensorEventListener {
 
+    var dailyGoal: Int = 10000
     private var sensorManager: SensorManager? = null
     private var accelerometer: Sensor? = null
 
