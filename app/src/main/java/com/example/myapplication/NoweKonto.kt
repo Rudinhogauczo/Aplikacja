@@ -48,7 +48,7 @@ class NoweKonto : AppCompatActivity() {
 
         val buttonAkceptacja = findViewById<ImageButton>(R.id.ButtonAkceptacja)
         buttonAkceptacja.setOnClickListener {
-            val imieEditText = findViewById<EditText>(R.id.PodajImie)
+            val imieEditText = findViewById<EditText>(R.id.PodajNazweKonta)
             val wzrostEditText = findViewById<EditText>(R.id.PodajWzrost)
             val wagaEditText = findViewById<EditText>(R.id.PodajWagę)
             val typWagiSpinner = findViewById<Spinner>(R.id.WyborTypu)
